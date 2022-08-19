@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using RabbitMQ.Client;
 using Steeltoe.Messaging.Handler.Attributes;
 using Steeltoe.Messaging.RabbitMQ;
 using Steeltoe.Messaging.RabbitMQ.Attributes;
@@ -17,7 +18,7 @@ namespace ConsoleGenericHost
             this.logger = logger;
         }
 
-        [RabbitListener("myqueue")]
+        [RabbitListener(Binding = Names.BINDING_NAME )]
         public void Listen(string input)
         {
             logger.LogInformation(input);

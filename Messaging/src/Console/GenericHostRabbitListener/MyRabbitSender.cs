@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Steeltoe.Messaging.RabbitMQ.Config;
 using Steeltoe.Messaging.RabbitMQ.Core;
 using Steeltoe.Messaging.RabbitMQ.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,11 +11,13 @@ namespace ConsoleGenericHost
     public class MyRabbitSender : IHostedService
     {
         private RabbitTemplate template;
+        private IExchange topic; 
         private Timer timer;
 
-        public MyRabbitSender(IServiceProvider services)
+        public MyRabbitSender(IServiceProvider services, IExchange topicExchange)
         {
             template = services.GetRabbitTemplate();
+            topic = topicExchange;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
@@ -33,7 +34,7 @@ namespace ConsoleGenericHost
 
         private void Sender(object state)
         {
-            template.ConvertAndSend("myqueue", "foo");
+            template.ConvertAndSend(topic.ExchangeName, Names.ROUTING_KEY, "foo");
         }
     }
 }
