@@ -1,0 +1,25 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: fortune-teller-ui
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: fortune-teller
+    tanzu.app.live.view: "true"
+    tanzu.app.live.view.application.flavours: steeltoe
+    tanzu.app.live.view.application.name: fortuneui
+spec:
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "1"
+  env:
+  - name: DOTNET_CLI_TELEMETRY_OPTOUT
+    value: "true"
+  - name: ASPNETCORE_ENVIRONMENT
+    value: "k8s"
+  source:
+    git:
+      url: <https URL for your generated project's Git repository>
+      ref:
+        branch: main
