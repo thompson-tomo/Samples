@@ -1,7 +1,7 @@
-﻿SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='your-registry.io/project/csharp-rest-service-source') # update registry
+SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='us-central1-docker.pkg.dev/dotnet-developer-experience/dotnet-experience-containers/thess/fortune-service')
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
-NAMESPACE = os.getenv("NAMESPACE", default='default')
-NAME = "fortuneui"
+NAMESPACE = os.getenv("NAMESPACE", default='thess')
+NAME = "fortune-teller-service"
 
 k8s_custom_deploy(
   NAME,
@@ -15,12 +15,9 @@ k8s_custom_deploy(
   delete_cmd="tanzu apps workload delete " + NAME + " --namespace " + NAMESPACE + " --yes",
   deps=['./bin'],
   container_selector='workload',
-  live_update=[
-    sync('./bin/Debug/net6.0', '/workspace')
-  ]
+  live_update=[ sync('./bin/Debug/net6.0', '/workspace') ]
 )
 
-k8s_resource(NAME, port_forwards=["8080:8080"],
-            extra_pod_selectors=[{'carto.run/workload-name': 'fortuneui', 'app.kubernetes.io/component': 'run'}])
+k8s_resource(NAME, port_forwards=["8080:8080"], extra_pod_selectors=[{'carto.run/workload-name': 'fortuneservice', 'app.kubernetes.io/component': 'run'}])
 
-allow_k8s_contexts('<context>') # update the context
+allow_k8s_contexts('gke_dotnet-developer-experience_us-central1-c_dotnet-devx-tap-blue')

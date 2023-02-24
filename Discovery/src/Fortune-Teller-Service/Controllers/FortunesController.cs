@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using FortuneTellerService.Models;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace FortuneTellerService.Controllers
 {
@@ -22,7 +23,8 @@ namespace FortuneTellerService.Controllers
         [HttpGet]
         public IEnumerable<Fortune> Get()
         {
-            _logger?.LogInformation("GET api/fortunes");
+            _logger?.LogInformation("GET api/fortunes all the time! and then change the log message with some trivial additional text");
+            throw new NotImplementedException();
             return _fortunes.GetAll();
         }
 
