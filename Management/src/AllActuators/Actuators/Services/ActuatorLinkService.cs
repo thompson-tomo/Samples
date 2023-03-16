@@ -8,10 +8,10 @@ namespace Steeltoe.Actuators.Services
 {
     public class ActuatorLinkService : IActuatorLinkService
     {
-        private readonly ActuatorEndpoint actuatorEndpoint;
+        private readonly IActuatorEndpoint actuatorEndpoint;
         private readonly ILogger<ActuatorLinkService> logger;
 
-        public ActuatorLinkService(ActuatorEndpoint actuatorEndpoint, ILogger<ActuatorLinkService> logger)
+        public ActuatorLinkService(IActuatorEndpoint actuatorEndpoint, ILogger<ActuatorLinkService> logger)
         {
             this.actuatorEndpoint = actuatorEndpoint;
             this.logger = logger;
