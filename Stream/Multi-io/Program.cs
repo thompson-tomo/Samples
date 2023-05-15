@@ -6,6 +6,6 @@ using Steeltoe.Stream.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Host.AddStreamServices(typeof(SampleSource));
+builder.Host.AddStreamServices(typeof(SampleSource), typeof(SampleSink));
 builder.Services.AddHostedService<PollerService>();
 builder.Build().Run();
