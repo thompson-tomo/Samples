@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore", "EFCore\EFCore.csproj", "{E8CFFAC1-EFEB-4E0B-9DE3-558FAAA57B7B}"
 EndProject
@@ -57,6 +57,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudDataflowLogSinkK8s", "CloudDataFlowLogSinkK8s\CloudDataflowLogSinkK8s.csproj", "{B8C69F05-906D-482D-9F01-10E49613E4EA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudDataflowToUpperProcessorK8s", "CloudDataFlowToUpperProcessorK8s\CloudDataflowToUpperProcessorK8s.csproj", "{176FFB6B-C7AC-418A-B692-E83704C8FD98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiIo", "Multi-io\MultiIo.csproj", "{5C696A29-92B0-448F-A04A-D1CD8808BD15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiIo2", "Multi-io2\MultiIo2.csproj", "{9892EE4A-ECBB-4BD4-BD81-8225C6B54AE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -152,6 +156,14 @@ Global
 		{176FFB6B-C7AC-418A-B692-E83704C8FD98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{176FFB6B-C7AC-418A-B692-E83704C8FD98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{176FFB6B-C7AC-418A-B692-E83704C8FD98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C696A29-92B0-448F-A04A-D1CD8808BD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C696A29-92B0-448F-A04A-D1CD8808BD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C696A29-92B0-448F-A04A-D1CD8808BD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C696A29-92B0-448F-A04A-D1CD8808BD15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9892EE4A-ECBB-4BD4-BD81-8225C6B54AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9892EE4A-ECBB-4BD4-BD81-8225C6B54AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9892EE4A-ECBB-4BD4-BD81-8225C6B54AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9892EE4A-ECBB-4BD4-BD81-8225C6B54AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

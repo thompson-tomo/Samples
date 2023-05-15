@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MultiIo": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

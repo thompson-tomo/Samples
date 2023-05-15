@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <!--<PackageReference Include="Steeltoe.Stream.Binder.RabbitMQ" Version="3.2.1" />
+    <PackageReference Include="Steeltoe.Stream.StreamBase" Version="3.2.1" />-->
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\pr\Steeltoe\src\Stream\src\BinderRabbitMQ\Steeltoe.Stream.Binder.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\..\pr\Steeltoe\src\Stream\src\StreamBase\Steeltoe.Stream.StreamBase.csproj" />
+  </ItemGroup>
+</Project>
