@@ -52,7 +52,7 @@ namespace Steeltoe.Actuators
             // Run latest migrations if any
             employeeDataContext.Database.Migrate();
 
-            app.UseHttpsRedirection();
+         //   app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
