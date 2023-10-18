@@ -1,19 +1,20 @@
 ﻿using Microsoft.Extensions.Logging;
 using Steeltoe.Actuators.Models;
-using Steeltoe.Management.Endpoint.Hypermedia;
+using Steeltoe.Management.Endpoint.Web.Hypermedia;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Steeltoe.Actuators.Services
 {
     public class ActuatorLinkService : IActuatorLinkService
     {
-        private readonly IActuatorEndpoint actuatorEndpoint;
+        private readonly IActuatorEndpointHandler actuatorEndpointHandler;
         private readonly ILogger<ActuatorLinkService> logger;
 
-        public ActuatorLinkService(IActuatorEndpoint actuatorEndpoint, ILogger<ActuatorLinkService> logger)
+        public ActuatorLinkService(IActuatorEndpointHandler actuatorEndpointHandler, ILogger<ActuatorLinkService> logger)
         {
-            this.actuatorEndpoint = actuatorEndpoint;
+            this.actuatorEndpointHandler = actuatorEndpointHandler;
             this.logger = logger;
         }
 
@@ -23,17 +24,17 @@ namespace Steeltoe.Actuators.Services
 
             var actuatorLinks = Enumerable.Empty<HrefProperties>();
 
-            var actuatorEndpoints = actuatorEndpoint.Invoke("/actuator");
+            var actuatorEndpoints = actuatorEndpointHandler.InvokeAsync("/actuator", new CancellationTokenSource().Token).Result;
 
             if (actuatorEndpoints is not null)
             {
-                logger.LogInformation($"Found {actuatorEndpoints._links.Count} actuators");
+                logger.LogInformation($"Found {actuatorEndpoints.Entries.Count} actuators");
 
-                actuatorLinks = actuatorEndpoints._links.Select(link =>
+                actuatorLinks = actuatorEndpoints.Entries.Select(entry =>
                     new HrefProperties
                     {
-                        Display = link.Key != "self" ? link.Key : "all actuators",
-                        Address = link.Value.Href
+                        Display = entry.Key != "self" ? entry.Key : "all actuators",
+                        Address = entry.Value.Href
                     });
             }
             else
