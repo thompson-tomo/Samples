@@ -131,7 +131,6 @@ namespace CloudFoundrySingleSignon.Controllers
 
         public IActionResult Manage()
         {
-            ViewData["Message"] = "Manage accounts using UAA or CF command line.";
             return View();
         }
 

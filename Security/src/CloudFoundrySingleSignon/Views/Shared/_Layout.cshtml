@@ -32,9 +32,14 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="TestGroup">testgroup</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="AnotherTestGroup">testgroup1</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="InvokeJwtSample">JWT</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="InvokeSameSpaceSample">SameSpace</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="InvokeSameOrgSample">SameOrg</a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="InvokeJwtSample">JWT</a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="InvokeSameSpaceSample">SameSpace</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="InvokeSameOrgSample">SameOrg</a>
+                    </li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

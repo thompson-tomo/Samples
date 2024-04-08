@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Steeltoe.Common.Hosting;
 using Steeltoe.Extensions.Configuration.CloudFoundry;
 using Steeltoe.Management.Endpoint;
-using Steeltoe.Security.Authentication.CloudFoundry;
+using Steeltoe.Security.Authentication.ClientCertificate;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddCloudFoundry();

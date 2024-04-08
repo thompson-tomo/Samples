@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Simple.Model;
+using Steeltoe.Discovery.Client;
 using Steeltoe.Extensions.Configuration.ConfigServer;
 
 namespace Simple
@@ -34,6 +35,8 @@ namespace Simple
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
+
+            services.AddDiscoveryClient(Configuration);
 
             // Optional: Adds ConfigServerClientOptions to service container
             services.ConfigureConfigServerClientOptions(Configuration);

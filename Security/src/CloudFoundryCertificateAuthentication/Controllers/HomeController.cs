@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Steeltoe.Security.Authentication.CloudFoundry;
+using Steeltoe.Security.Authentication.ClientCertificate;
 
 namespace CloudFoundryCertificateAuthentication.Controllers;
 

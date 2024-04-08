@@ -12,11 +12,12 @@ namespace Simple
         {
             BuildWebHost(args).Run();
         }
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                    .AddConfigServer()
-                    //.AddDiscoveryClient()
-                    .UseStartup<Startup>()
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            var builder = WebHost.CreateDefaultBuilder(args);
+            builder.AddConfigServer();
+            return builder.UseStartup<Startup>()
                     .Build();
+        }
     }
 }

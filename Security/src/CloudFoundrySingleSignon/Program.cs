@@ -9,7 +9,7 @@ using Steeltoe.Common.Hosting;
 using Steeltoe.Connector.Redis;
 using Steeltoe.Extensions.Configuration.CloudFoundry;
 using Steeltoe.Management.Endpoint;
-using Steeltoe.Security.Authentication.CloudFoundry;
+using Steeltoe.Security.Authentication.ClientCertificate;
 using Steeltoe.Security.DataProtection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,8 +38,8 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("testgroup", policy => policy.RequireClaim("scope", "testgroup"));
-    options.AddPolicy("testgroup1", policy => policy.RequireClaim("scope", "testgroup1"));
+    options.AddPolicy("test.group", policy => policy.RequireClaim("scope", "test.group"));
+    options.AddPolicy("test.group1", policy => policy.RequireClaim("scope", "test.group1"));
 });
 
 // In order to facilitate scaling beyond a single instance,
