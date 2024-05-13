@@ -24,10 +24,10 @@ namespace MusicStore.Models
                     var scopeServiceProvider = serviceScope.ServiceProvider;
                     var db = serviceScope.ServiceProvider.GetService<MusicStoreContext>();
 
-                    if (db.Database.EnsureCreated())
+                    /*if (db.Database.EnsureCreated())
                     {
                         InsertTestData(serviceProvider);
-                    }
+                    }*/
                 }
                 artists = null;
                 genres = null;

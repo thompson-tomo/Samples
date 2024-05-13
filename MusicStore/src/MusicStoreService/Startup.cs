@@ -25,8 +25,8 @@ namespace MusicStore
 
             // Steeltoe MySQL Connector
             //services.AddDbContext<MusicStoreContext>(options => options.UseSqlServer(Configuration));
-            services.AddDbContext<MusicStoreContext>(options => options.UseMySql(Configuration));
-            services.AddMySqlHealthContributor(Configuration);
+            //services.AddDbContext<MusicStoreContext>(options => options.UseMySql(Configuration));
+            //services.AddMySqlHealthContributor(Configuration);
 
             services.AddDistributedTracing();
 

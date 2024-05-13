@@ -6,7 +6,7 @@
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
-  <!-- <ItemGroup> 
+  <!-- <ItemGroup>
     <None Include="git.properties">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -29,7 +29,7 @@
     <PackageReference Include="Steeltoe.Connector.CloudFoundry" Version="$(SteeltoeVersion)" />
     <PackageReference Include="Steeltoe.Connector.ConnectorCore" Version="$(SteeltoeVersion)" />
     <PackageReference Include="Steeltoe.Connector.EFCore" Version="$(SteeltoeVersion)" />
-    <PackageReference Include="Steeltoe.Discovery.Eureka" Version="$(SteeltoeVersion)" />
+    <!--<PackageReference Include="Steeltoe.Discovery.Eureka" Version="$(SteeltoeVersion)" />-->
     <PackageReference Include="Steeltoe.Management.CloudFoundryCore" Version="$(SteeltoeVersion)" />
     <PackageReference Include="Steeltoe.Management.TracingCore" Version="$(SteeltoeVersion)" />
     <!-- GitInfo provides $(Git*) properties used below
@@ -37,6 +37,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference> -->
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Steeltoe\src\Discovery\src\Eureka\Steeltoe.Discovery.Eureka.csproj" />
   </ItemGroup>
 
   <!-- <Target Name="_GitProperties" AfterTargets="CoreCompile">

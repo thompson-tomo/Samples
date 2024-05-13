@@ -10,6 +10,7 @@ using Steeltoe.Discovery.Client;
 using Steeltoe.Extensions.Configuration.ConfigServer;
 using Steeltoe.Management.Endpoint;
 using System;
+using WeMicroIt.Dashboard.Extensions;
 
 namespace MusicStore
 {
@@ -27,7 +28,21 @@ namespace MusicStore
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webbuilder => webbuilder.UseStartup<Startup>())
-                .ConfigureAppConfiguration(AddRemoteConfiguration)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddEnvironmentVariables();
+                    var tempConfig = config.Build();
+                    config.AddDashConfiguration();
+                    tempConfig = config.Build();
+                    config.AddConfigServer(new ConfigServerClientSettings()
+                    {
+                        RetryAttempts = 5,
+                        RetryEnabled = false,
+                        Uri = "http://localhost:90/api/config",
+                        PollingInterval = new TimeSpan(0, 1, 0),
+                        Name = "WeMicroIt-Portal"
+                    }).Build();
+                })
                 .AddAllActuators()
                 .AddDiscoveryClient();
 
@@ -35,7 +50,7 @@ namespace MusicStore
         {
             using var scope = host.Services.CreateScope();
             var services = scope.ServiceProvider;
-            SampleData.InitializeMusicStoreDatabase(services);
+            //SampleData.InitializeMusicStoreDatabase(services);
         }
 
         private static Action<HostBuilderContext, IConfigurationBuilder> AddRemoteConfiguration =>
@@ -48,7 +63,7 @@ namespace MusicStore
                 }
                 else
                 {
-                    configBuilder.AddConfigServer(builderContext.HostingEnvironment.EnvironmentName, GetLoggerFactory());
+                    //configBuilder.AddConfigServer(builderContext.HostingEnvironment.EnvironmentName, GetLoggerFactory());
                 }
                 configBuilder.AddEnvironmentVariables();
             };
